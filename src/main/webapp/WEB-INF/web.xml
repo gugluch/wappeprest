@@ -11,4 +11,22 @@
         <servlet-name>HelloWorldServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SplServlet</servlet-name>
+        <servlet-class>com.example.rest.SplServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SplServlet</servlet-name>
+        <url-pattern>/spl</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ErdServlet</servlet-name>
+        <servlet-class>com.example.rest.ErdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErdServlet</servlet-name>
+        <url-pattern>/erd</url-pattern>
+    </servlet-mapping>
 </web-app>
