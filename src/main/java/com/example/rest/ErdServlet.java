@@ -3,6 +3,7 @@ package com.example.rest;
 import com.example.rest.model.ErdRequest;
 import com.example.rest.model.ErdResponse;
 import com.example.rest.model.SrNr;
+import com.example.rest.util.RequestLogger;
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -47,5 +48,7 @@ public class ErdServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write(jsonResponse);
+
+        RequestLogger.log(req, requestBody, jsonResponse);
     }
 }

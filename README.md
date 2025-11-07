@@ -22,3 +22,68 @@ This project is a simple Java REST server designed to run on a Tomcat 10 server.
 9.  This will compile the project and create a `rest-server.war` file in the `target` directory.
 
 You can then deploy the `rest-server.war` file to your Tomcat 10 server.
+
+## Logging
+
+This project includes a request logging feature. For every request to the `/spl` and `/erd` endpoints, a log file will be created or appended to.
+
+*   **Log File Location:** The log files are created in the `logs` directory of your Tomcat installation.
+*   **Log File Naming:** The log file is named after the deployed WAR file. For example, if you deploy the project as `rest-server.war`, the log file will be `rest-server.log`.
+*   **Log File Format:** Each log entry contains the following information:
+    *   Start Time
+    *   Request Body (in JSON format)
+    *   Response Body (in JSON format)
+    *   End Time
+
+## Sending Requests with SoapUI
+
+1.  **Open SoapUI.**
+2.  Go to **File > New REST Project**.
+3.  Enter the URI of your deployed application. For example, if you're running Tomcat on your local machine on port 8080, the URI would be `http://localhost:8080/rest-server`.
+4.  SoapUI will create a new project with the specified endpoint.
+5.  To send a request to the `/spl` endpoint, create a new `POST` request with the path `/spl`.
+6.  Set the **Media Type** to `application/json`.
+7.  In the request body, paste the following JSON:
+    ```json
+    {
+      "src_idtr": "string",
+      "spl_number": [
+        {
+          "erd_nr": "123",
+          "ctrl_nr": "456"
+        },
+        {
+          "erd_nr": "NEED_ER",
+          "ctrl_nr": "789"
+        }
+      ]
+    }
+    ```
+8.  To send a request to the `/erd` endpoint, create a new `POST` request with the path `/erd`.
+9.  Set the **Media Type** to `application/json`.
+10. In the request body, paste the following JSON:
+    ```json
+    {
+      "erd_key": {
+        "shnr": "string",
+        "sornr": "string"
+      },
+      "cm_name": "string",
+      "or_type": "string",
+      "ss_ifr": "string",
+      "sr_nr": [
+        {
+          "erd_nr": "ABC",
+          "ctrl_nr": "DEF"
+        }
+      ],
+      "details": [
+        {
+          "inf": "string",
+          "code": "string",
+          "qty": 1,
+          "amnt": "string"
+        }
+      ]
+    }
+    ```

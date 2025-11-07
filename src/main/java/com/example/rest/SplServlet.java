@@ -4,6 +4,7 @@ import com.example.rest.model.SplNumber;
 import com.example.rest.model.SplRequest;
 import com.example.rest.model.SplResponse;
 import com.example.rest.model.SplResult;
+import com.example.rest.util.RequestLogger;
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -49,5 +50,7 @@ public class SplServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write(jsonResponse);
+
+        RequestLogger.log(req, requestBody, jsonResponse);
     }
 }
